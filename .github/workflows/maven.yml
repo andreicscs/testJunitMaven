@@ -30,4 +30,4 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file testJunitMaven/pom.xml
     - name: Run JUnit tests
-      run: mvn test --file testJunitMaven/pom.xml
+      run: mvn verify --file testJunitMaven/pom.xml
