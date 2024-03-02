@@ -28,4 +28,10 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B verify package --file testJunitMaven/pom.xml
+      run: |
+        mvn -B verify --file testJunitMaven/pom.xml
+        test_exit_code=$?
+        if [ $test_exit_code -ne 0 ]; then
+          echo "Tests failed. Exiting with code $test_exit_code"
+          exit $test_exit_code
+        fi
